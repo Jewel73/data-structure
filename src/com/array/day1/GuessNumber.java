@@ -1,6 +1,6 @@
 //https://leetcode.com/problems/guess-number-higher-or-lower/
 
-package com.jewel.day1;
+package com.array.day1;
 
 public class GuessNumber {
     public static void main(String[] args) {

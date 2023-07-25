@@ -1,6 +1,6 @@
 //https://leetcode.com/problems/first-bad-version/submissions/
 
-package com.jewel.day1;
+package com.array.day1;
 
 import java.util.Random;
 

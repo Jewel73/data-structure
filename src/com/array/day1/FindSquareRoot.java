@@ -1,6 +1,6 @@
 // leetcode problem: https://leetcode.com/problems/sqrtx/description/
 
-package com.jewel.day1;
+package com.array.day1;
 
 public class FindSquareRoot {
     public static void main(String[] args) {
