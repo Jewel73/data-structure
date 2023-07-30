@@ -63,4 +63,4 @@ I have started 100 days code challenge on 26 july 2023. I am going to be prepari
 - sum of left value = (n/2) * (n+1) , example 1 + 2 + 3 + 4 +5 = (n/2) *(n+1) = 15
 - Find Kth Missing Number -  2, 4,5,7 , find all missing number from 4: n - (index+ 1)
 - Kth missing 4 - (1+1) = 2, find Kth Value: start + k. Why? 1 - 7 , here first two missing value is 2,3 and our answer should be 3, how to get it? after looping our pointer will be in 7, we will take the index of it, because it's index is Equal to previous index value and the based on missing value we will add the k.
--
+- Exchange value that get two same sum: (B-A)/2 = diff, need to check A[i]+diff is the exchangeable element
