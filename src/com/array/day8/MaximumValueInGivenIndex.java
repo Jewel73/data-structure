@@ -1,57 +1,58 @@
+/*
+* https://leetcode.com/problems/maximum-value-at-a-given-index-in-a-bounded-array/
+* */
+
 package com.array.day8;
 
 public class MaximumValueInGivenIndex {
 
     public static void main(String[] args) {
-        int n = 6, index = 1,  maxSum = 10 ;
+        long n = 3, index = 0,  maxSum = 815094800 ;
 
         System.out.println(maxValue(n, index, maxSum));
     }
-    public static int maxValue(int n, int index, int maxSum) {
+    public static int maxValue(long n, long index, long maxSum) {
 
-        int [] ans = new int[n];
+        long r = n - index - 1;
+        long l = index;
+        long high = maxSum;
+        long res = 0;
+        long low = 1;
 
-        int start = 0;
-        int end = maxSum;
+        while(low <= high){
 
-        while(start <= end){
+            long mid = low + (high-low)/2;
 
-            int mid = start + (end -start)/2;
+            long sum = mid;
+            long rs = 0;
+            long ls = 0;
+            long m = mid-1;
 
-            ans[index] = mid;
-            ans = insertValueInArray(index+1, n, mid, index, ans);
-            ans = insertValueInArray(0, index, mid, index, ans);
-
-            int sum = sumArr(ans);
-
-            if(sum > maxSum){
-                end = mid-1;
-            } else if (sum < maxSum) {
-                start = mid+1;
+            if(r <= m){
+                rs = m * (m+1) /2 - (m-r) * (m-r+1)/2;
             }else {
-                return ans[index];
+                rs = m*(m+1)/2 + 1*(r-m);
             }
+
+            if(l <= m){
+                ls = m*(m+1)/2 - (m-l)*(m-l+1)/2;
+            }else {
+                ls = m*(m+1)/2 + 1* (l-m);
+            }
+
+            sum += ls + rs;
+
+            if(sum <= maxSum){
+                low = mid +1;
+                res = mid;
+            }else {
+                high = mid-1;
+            }
+
         }
 
-        return ans[index];
+        return (int) res;
 
-    }
 
-    public  static  int sumArr(int[] arr){
-        int sum = 0;
-        for(int n : arr) {
-            sum += n;
-        }
-
-        return sum;
-    }
-    public static int[] insertValueInArray(int fromIndex, int toIndex, int fromValue,int maxIndex, int[] arr){
-        int val = arr[maxIndex];
-        for (int i=fromIndex; i<toIndex; i++){
-            val--;
-            if(val<1) arr[i] = 1;
-            else arr[i] = val;
-        }
-        return arr;
     }
 }
