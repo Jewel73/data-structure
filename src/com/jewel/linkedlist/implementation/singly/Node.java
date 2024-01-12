@@ -1,4 +1,4 @@
-package com.jewel.linkedlist.implementation;
+package com.jewel.linkedlist.implementation.singly;
 
 public class Node<T> {
     private T value;
