@@ -15,25 +15,14 @@ public class BinarySearchTree {
             }
 
             Node temp = root;
-            while(true){
-                if(value > temp.value){
-                    if(temp.right != null){
-                        temp = temp.right;
-                    }else {
-                        return false;
-                    }
-
-                }else if(value < temp.value){
-                    if(temp.left != null){
-                        temp = temp.left;
-                    }else{
-                        return false;
-                    }
-                }else{
-                    return true;
-                }
+            while(temp != null){
+                if(value > temp.value) temp = temp.right;
+                else if(value < temp.value) temp = temp.left;
+                else return true;
             }
+            return false;
         }
+
         public boolean insert(int value){
             Node newNode = new Node(value);
             if(root == null) {
