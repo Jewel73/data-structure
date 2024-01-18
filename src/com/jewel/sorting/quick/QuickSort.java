@@ -11,33 +11,35 @@ public class QuickSort {
         System.out.println(Arrays.toString(arr));
     }
 
-    public static void sort(int arr[], int start, int end){
+    public static void sort(int arr[], int pivot , int end){
 
-        int pivotIndex = pivot(arr, start, end);
-        if(start<end){
-            sort(arr, start, pivotIndex-1);
-            sort(arr, pivotIndex+1, end);
+        int pivot1 = pivot(arr, pivot, end);
+        if(pivot < end){
+            sort(arr, 0, pivot1-1);
+            sort(arr, pivot1+1, end);
         }
+
     }
 
-    public static int pivot(int arr[], int start, int end){
-        int pivot = start;
-        int swapIndex = start;
-
-        for (int i=pivot+1; i<=end; i++){
-            if(arr[pivot] > arr[i]){
-                swapIndex++;
-                swap(arr, swapIndex, i);
+    public static int pivot(int arr[], int pivot, int end){
+        int swap = pivot;
+        for(int i=1+pivot; i<= end; i++){
+            if(arr[pivot]> arr[i]){
+                swap++;
+                swapValue(arr, swap, i);
             }
-
         }
-        swap(arr, pivot, swapIndex);
-        return swapIndex;
+
+        swapValue(arr, swap, pivot);
+        return swap;
+
     }
 
-    public static void swap(int arr[], int swap, int i){
-        int temp = arr[i];
-        arr[i] = arr[swap];
-        arr[swap] = temp;
+    public static void swapValue(int arr[], int swap, int i){
+        int temp = arr[swap];
+        arr[swap] = arr[i];
+        arr[i] = temp;
     }
+
+
 }
